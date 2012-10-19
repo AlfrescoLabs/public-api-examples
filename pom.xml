@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.myproject</groupId>
+  <artifactId>public-api-examples</artifactId>
+  <version>1.0</version>
+  <name>public-api-examples</name>
+  <description>A working application that communicates with the Alfresco Public api
+------------------------------------------
+Project version: 1.0
+------------------------------------------
+This Pom is auto-generated using 'gradlew mavenPom'</description>
+  <url>http://www.mycompany.com</url>
+  <organization>
+    <name>My company</name>
+    <url>http://www.mycompany.com</url>
+  </organization>
+  <prerequisites>
+    <maven>3.0.3</maven>
+  </prerequisites>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

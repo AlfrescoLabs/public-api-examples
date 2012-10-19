@@ -1,5 +1,6 @@
 apply plugin: 'war'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
 apply plugin: 'jetty'
 
 sourceCompatibility = 1.6
@@ -38,15 +39,35 @@ dependencies {
     testCompile 'junit:junit:4.10'
 }
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Alfresco Public Api examples', 'Implementation-Version': version
+install {
+   repositories.mavenInstaller {
+        customizePom(pom, project)
     }
 }
 
-jettyRun {
-    contextPath = jettyPath
-    httpPort = jettyPort
+task mavenPom << {
+    def thePom = pom {}
+    customizePom(thePom,project)
+    thePom.writeTo("pom.xml")
+}
+
+def customizePom(pom, gradleProject) {
+    pom.whenConfigured { generatedPom ->
+
+        generatedPom.project {
+            artifactId = gradleProject.archivesBaseName
+            name = gradleProject.archivesBaseName
+            url = 'http://www.mycompany.com'
+            description = gradleProject.description + "This Pom is auto-generated using 'gradlew mavenPom'"
+            organization {
+                name = 'My company'
+                url = 'http://www.mycompany.com'
+            }
+            prerequisites {
+                maven = "3.0.3"
+            }
+        }
+    }
 }
 
 defaultTasks 'tasks'
