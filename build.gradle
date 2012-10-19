@@ -1,0 +1,40 @@
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'jetty'
+
+sourceCompatibility = 1.6
+version = '1.0'
+group = 'com.myproject'
+
+jettyRun {
+    contextPath = 'alfapi'
+    httpPort = 8090
+}
+
+description = """\
+A working application that communicates with the Alfresco Public api
+------------------------------------------
+Project version: ${version}
+------------------------------------------
+"""
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Alfresco Public Api examples', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://artifacts.alfresco.com/nexus/content/groups/public"
+    }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.10'
+}
+
+defaultTasks 'tasks'
