@@ -1,15 +1,14 @@
 apply plugin: 'war'
 apply plugin: 'eclipse'
-apply plugin: 'maven'
 apply plugin: 'jetty'
 
 sourceCompatibility = 1.6
 version = '1.0'
 group = 'com.myproject'
 
-jettyRun {
-    contextPath = 'alfapi'
-    httpPort = 8090
+ext {
+	jettyPath = 'alfapi'
+	jettyPort = 8090
 }
 
 description = """\
@@ -18,12 +17,6 @@ A working application that communicates with the Alfresco Public api
 Project version: ${version}
 ------------------------------------------
 """
-
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Alfresco Public Api examples', 'Implementation-Version': version
-    }
-}
 
 repositories {
     mavenLocal()
@@ -35,6 +28,17 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.10'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Alfresco Public Api examples', 'Implementation-Version': version
+    }
+}
+
+jettyRun {
+    contextPath = jettyPath
+    httpPort = jettyPort
 }
 
 defaultTasks 'tasks'
