@@ -53,9 +53,10 @@ task mavenPom << {
 
 
 def customizePom(pom, gradleProject) {
+
     pom.whenConfigured { generatedPom ->
 
-    	//Set support model attributes
+    	//Set supported model attributes
         generatedPom.project {
             artifactId = gradleProject.archivesBaseName
             name = gradleProject.archivesBaseName
