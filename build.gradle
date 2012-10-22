@@ -51,9 +51,11 @@ task mavenPom << {
     thePom.writeTo("pom.xml")
 }
 
+
 def customizePom(pom, gradleProject) {
     pom.whenConfigured { generatedPom ->
 
+    	//Set support model attributes
         generatedPom.project {
             artifactId = gradleProject.archivesBaseName
             name = gradleProject.archivesBaseName
@@ -68,6 +70,23 @@ def customizePom(pom, gradleProject) {
             }
         }
     }
+
+    //Customize the pom outside of the basic model
+    pom.withXml { XmlProvider provider ->
+
+        def builder = new NodeBuilder()
+        def repos = builder."repositories" {
+        	repositories.findAll{ it.name.endsWith("Repository") }.each { repo ->
+        		"repository" {
+        			id (repo.name.minus(" "))
+        			name(repo.name)
+        			url(repo.url)
+        		}
+        	}
+        }
+
+        provider.asNode().append repos
+   	}
 }
 
 defaultTasks 'tasks'
