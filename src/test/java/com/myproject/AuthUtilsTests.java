@@ -14,7 +14,7 @@ import org.junit.Test;
  */
 public class AuthUtilsTests
 {
-    private boolean sysOut = false;
+    private boolean sysOut = true;
 
     @Test
     public void testGetConfig()
