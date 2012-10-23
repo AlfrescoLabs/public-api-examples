@@ -1,6 +1,7 @@
 apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'jetty'
+apply plugin: 'groovy'
 
 sourceCompatibility = 1.6
 version = '1.0'
@@ -32,7 +33,8 @@ repositories {
 }
 
 dependencies {
-	//compile 'org.apache.chemistry.opencmis:chemistry-opencmis-client-impl:0.8.0-SNAPSHOT'
+    groovy group: 'org.codehaus.groovy', name: 'groovy', version: '2.0.5'
+	compile 'org.apache.chemistry.opencmis:chemistry-opencmis-client-impl:0.8.0-SNAPSHOT'
 	compile 'org.alfresco.cmis.client:alfresco-opencmis-extension:0.3'
 	compile 'org.springframework.social:spring-social-alfresco:0.2.5-RELEASE'
     testCompile 'junit:junit:4.10'
