@@ -12,14 +12,14 @@ import com.myproject.AuthorizedApiConnection;
 /**
  * Servlet implementation that uses the api
  */
-public class MyServlet extends HttpServlet {
+public class ApiInfoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -3619127135712445254L;
 
 	/**
      * @see HttpServlet#HttpServlet()
      */
-    public MyServlet() {
+    public ApiInfoServlet() {
         super();
     }
 
@@ -31,7 +31,7 @@ public class MyServlet extends HttpServlet {
         AuthorizedApiConnection apiConnection = (AuthorizedApiConnection) request.getSession().getAttribute(DanceStart.ALFRESCO_API_CONNECTION);
         if (apiConnection != null)
         {
-        	response.getWriter().append("You are now using the Alfresco API: "+apiConnection.getNetwork().toString());
+        	response.getWriter().append("You are now using the Alfresco API: "+apiConnection.getNetwork().getId());
         }
 
 	}
