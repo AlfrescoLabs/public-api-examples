@@ -4,4 +4,34 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description>Does the OAuth dance</description>
+    <display-name>DanceStart</display-name>
+    <servlet-name>DanceStart</servlet-name>
+    <servlet-class>com.myproject.servlets.DanceStart</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Handles the OAuth dance callback</description>
+    <display-name>DanceCallback</display-name>
+    <servlet-name>DanceCallback</servlet-name>
+    <servlet-class>com.myproject.servlets.DanceCallback</servlet-class>
+  </servlet>
+    <servlet>
+    <description>A servlet that uses the Alfresco API</description>
+    <display-name>MyServlet</display-name>
+    <servlet-name>MyServlet</servlet-name>
+    <servlet-class>com.myproject.servlets.MyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DanceStart</servlet-name>
+    <url-pattern>/dance/start</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DanceCallback</servlet-name>
+    <url-pattern>/dance/callback</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/api/info</url-pattern>
+  </servlet-mapping>
 </web-app>
