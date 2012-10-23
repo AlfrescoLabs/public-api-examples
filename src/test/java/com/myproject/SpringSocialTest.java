@@ -5,17 +5,16 @@ import static org.junit.Assert.fail;
 import java.util.Properties;
 import java.util.Scanner;
 
-import org.apache.chemistry.opencmis.client.api.Session;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.social.alfresco.api.Alfresco;
 import org.springframework.social.alfresco.connect.AlfrescoConnectionFactory;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.oauth2.AccessGrant;
-import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Parameters;
 
-public class SpringSocialTests {
+public class SpringSocialTest {
 
+	@Ignore
 	@Test
 	public void test() throws Exception {
 		authenticate(AuthUtils.getInstance().getConfig());

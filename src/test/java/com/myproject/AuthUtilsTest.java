@@ -12,7 +12,7 @@ import org.junit.Test;
  *
  * @author A Person
  */
-public class AuthUtilsTests
+public class AuthUtilsTest
 {
     private boolean sysOut = true;
 
