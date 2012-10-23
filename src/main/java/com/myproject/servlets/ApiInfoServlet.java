@@ -31,7 +31,7 @@ public class ApiInfoServlet extends HttpServlet {
         AuthorizedApiConnection apiConnection = (AuthorizedApiConnection) request.getSession().getAttribute(DanceStart.ALFRESCO_API_CONNECTION);
         if (apiConnection != null)
         {
-        	response.getWriter().append("You are now using the Alfresco API: "+apiConnection.getNetwork().getId());
+        	response.getWriter().append("You are now using the Alfresco API: "+apiConnection.getPerson().getFirstName());
         }
 
 	}

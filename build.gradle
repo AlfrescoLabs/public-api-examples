@@ -34,7 +34,7 @@ repositories {
 dependencies {
 	compile 'org.apache.chemistry.opencmis:chemistry-opencmis-client-impl:0.8.0-SNAPSHOT'
 	compile 'org.alfresco.cmis.client:alfresco-opencmis-extension:0.2'
-	compile 'org.springframework.social:spring-social-alfresco:0.2.4-RELEASE'
+	compile 'org.springframework.social:spring-social-alfresco:0.2.5-RELEASE'
     testCompile 'junit:junit:4.10'
 	providedCompile "javax.servlet:servlet-api:2.5"
 }

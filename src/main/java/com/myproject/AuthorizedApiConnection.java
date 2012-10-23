@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.apache.chemistry.opencmis.client.api.Session;
 import org.springframework.social.alfresco.api.Alfresco;
 import org.springframework.social.alfresco.api.entities.Network;
+import org.springframework.social.alfresco.api.entities.Person;
 import org.springframework.social.connect.UserProfile;
 
 /**
@@ -18,13 +19,13 @@ public class AuthorizedApiConnection implements Serializable {
 	
 	Alfresco connection;
 	Network network;
-	UserProfile profile;
+	Person person;
 	Session cmisSession;
 	
 	
-	public AuthorizedApiConnection(UserProfile profile, Network network, Alfresco connection, Session cmisSession) {
+	public AuthorizedApiConnection(Person person, Network network, Alfresco connection, Session cmisSession) {
 		super();
-		this.profile = profile;
+		this.person = person;
 		this.network = network;
 		this.connection = connection;
 		this.cmisSession = cmisSession;
@@ -38,8 +39,8 @@ public class AuthorizedApiConnection implements Serializable {
 		return network;
 	}
 
-	public UserProfile getProfile() {
-		return profile;
+	public Person getPerson() {
+		return person;
 	}
 
 	public Session getCmisSession() {
