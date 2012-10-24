@@ -87,7 +87,28 @@ def customizePom(pom, gradleProject) {
         	}
         }
 
+        def build = builder.build {
+        	plugins {
+        		plugin {
+        		  groupId("org.mortbay.jetty")
+        		  artifactId("maven-jetty-plugin")
+        		  createNode("version","6.1.25")  //fall back to method call because "version" is special
+        		  configuration {
+        		  	scanIntervalSeconds(10)
+        		  	contextPath("$jettyPath")
+        		  	connectors (implementation:"org.mortbay.jetty.nio.SelectChannelConnector") {
+        		  	 connector {
+        		  	 	port("$jettyPort")
+        		  	 	maxIdleTime(6000)
+        		  	 }
+        		  	}
+        		  }
+        		}
+        	}
+        }
+
         provider.asNode().append repos
+        provider.asNode().append build
    	}
 }
 
