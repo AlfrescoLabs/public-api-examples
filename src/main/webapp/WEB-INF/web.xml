@@ -16,6 +16,16 @@
     <servlet-name>DanceCallback</servlet-name>
     <servlet-class>com.myproject.servlets.DanceCallback</servlet-class>
   </servlet>
+  <servlet>
+    <description>Does an actions using the api</description>
+    <display-name>DoSomethingServlet</display-name>
+    <servlet-name>DoSomethingServlet</servlet-name>
+    <servlet-class>com.myproject.servlets.DoSomethingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSomethingServlet</servlet-name>
+    <url-pattern>/dosomething</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DanceStart</servlet-name>
     <url-pattern>/dance/start</url-pattern>

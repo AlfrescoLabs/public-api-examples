@@ -27,5 +27,9 @@ CMIS root folder is ${api_con.cmisSession.rootFolder.path}
 <section>
 Network is ${api_con.network.id}
 </section>
+<section>
+	<a href="/alfapi/dosomething">Do something great!</a>
+</section>
+
 </body>
 </html>
