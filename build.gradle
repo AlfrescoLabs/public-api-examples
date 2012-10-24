@@ -96,8 +96,8 @@ def customizePom(pom, gradleProject) {
         		  configuration {
         		  	scanIntervalSeconds(10)
         		  	contextPath("$jettyPath")
-        		  	connectors (implementation:"org.mortbay.jetty.nio.SelectChannelConnector") {
-        		  	 connector {
+        		  	connectors {
+        		  	 connector (implementation:"org.mortbay.jetty.nio.SelectChannelConnector") {
         		  	 	port("$jettyPort")
         		  	 	maxIdleTime(6000)
         		  	 }

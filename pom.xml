@@ -65,8 +65,8 @@ This Pom is auto-generated using 'gradlew mavenPom'</description>
         <configuration>
           <scanIntervalSeconds>10</scanIntervalSeconds>
           <contextPath>alfapi</contextPath>
-          <connectors implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-            <connector>
+          <connectors>
+            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
               <port>8090</port>
               <maxIdleTime>6000</maxIdleTime>
             </connector>
