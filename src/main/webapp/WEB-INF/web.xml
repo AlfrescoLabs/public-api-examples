@@ -16,12 +16,6 @@
     <servlet-name>DanceCallback</servlet-name>
     <servlet-class>com.myproject.servlets.DanceCallback</servlet-class>
   </servlet>
-    <servlet>
-    <description>A servlet that uses the Alfresco API</description>
-    <display-name>ApiInfoServlet</display-name>
-    <servlet-name>ApiInfoServlet</servlet-name>
-    <servlet-class>com.myproject.servlets.ApiInfoServlet</servlet-class>
-  </servlet>
   <servlet-mapping>
     <servlet-name>DanceStart</servlet-name>
     <url-pattern>/dance/start</url-pattern>
@@ -29,9 +23,5 @@
   <servlet-mapping>
     <servlet-name>DanceCallback</servlet-name>
     <url-pattern>/dance/callback</url-pattern>
-  </servlet-mapping>
-    <servlet-mapping>
-    <servlet-name>ApiInfoServlet</servlet-name>
-    <url-pattern>/api/info</url-pattern>
   </servlet-mapping>
 </web-app>

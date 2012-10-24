@@ -60,7 +60,7 @@ public class DanceCallback extends HttpServlet {
         //Add the user-specific information to the HTTP session for use in subsequent requests.
         AuthorizedApiConnection apiConnection = new AuthorizedApiConnection(person, network, alfresco, session);
         request.getSession().setAttribute(DanceStart.ALFRESCO_API_CONNECTION, apiConnection);
-        response.sendRedirect("/alfapi/api/info");
+        response.sendRedirect("/alfapi/jsp/apiinfo.jsp");
 	}
 
 }
