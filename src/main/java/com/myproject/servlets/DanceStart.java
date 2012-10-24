@@ -50,9 +50,9 @@ public class DanceStart extends HttpServlet {
 		AlfrescoConnectionFactory connectionFactory = OAuth2.getInstance().getConnectionFactory(props);
 		//Build the OAuth Authorize URL
 		String authURL = OAuth2.getInstance().getAuthorizationUrl(connectionFactory, props);
-		String redirectUrl = OAuth2.getInstance().getRedirectUrl(props);
 		
 		//Set them in the servet context (to be shared across the application)
+		String redirectUrl = OAuth2.getInstance().getRedirectUrl(props);
 		config.getServletContext().setAttribute(ALF_FACTORY, connectionFactory);
 		config.getServletContext().setAttribute(AUTH_URL, authURL);
 		config.getServletContext().setAttribute(REDIRECT_URL, redirectUrl);
