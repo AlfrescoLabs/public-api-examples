@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.Properties;
+import java.util.logging.LogManager;
 
 /**
  * Simple Utilities class
@@ -23,6 +24,17 @@ public class AuthUtils
 	public static final String aTestUrl = "aTestUrl";
 	public static final String myBrowser = "myBrowser";
 
+	// Initialize logging
+	static {
+		try {
+			// load a properties file
+			InputStream inputStream = AuthUtils.class.getResourceAsStream("/logging.properties");
+			LogManager.getLogManager().readConfiguration(inputStream);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Private constructor, use getInstance() instead.
 	 */

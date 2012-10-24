@@ -1,6 +1,7 @@
 package com.myproject.servlets;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,8 @@ import com.myproject.AuthorizedApiConnection;
 public class DanceCallback extends HttpServlet {
 
 	private static final long serialVersionUID = -991998559884692761L;
-
+	private final static Logger LOGGER = Logger.getLogger(DanceCallback.class.getName());
+	
 	/**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,7 +48,7 @@ public class DanceCallback extends HttpServlet {
 		//Exchange Auth code for an access token.
         AccessGrant accesstoken = connectionFactory.getOAuthOperations().exchangeForAccess(authorizationCode, redirectUrl, null);
         
-        System.out.println("Received an access token.."+accesstoken.getAccessToken());
+        LOGGER.fine("Received an access token.."+accesstoken.getAccessToken());
         
         //User specific connection
         Connection<Alfresco> connection = connectionFactory.createConnection(accesstoken);

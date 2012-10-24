@@ -2,6 +2,7 @@ package com.myproject.servlets;
 
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
@@ -22,6 +23,8 @@ import com.myproject.OAuth2;
 public class DanceStart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
+	private final static Logger LOGGER = Logger.getLogger(DanceStart.class.getName());
+	 
 	//Constants used as keys 
 	public static final String ALF_FACTORY = "alfresco_conn_factory";
 	public static final String AUTH_URL = "alfresco_auth_url";
@@ -53,7 +56,7 @@ public class DanceStart extends HttpServlet {
 		config.getServletContext().setAttribute(ALF_FACTORY, connectionFactory);
 		config.getServletContext().setAttribute(AUTH_URL, authURL);
 		config.getServletContext().setAttribute(REDIRECT_URL, redirectUrl);
-		System.out.println("Dance servlet initialised.");
+		LOGGER.info("Dance servlet initialised.");
 	}
 
 	/**
@@ -61,7 +64,7 @@ public class DanceStart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String authUrl  = (String) getServletContext().getAttribute(AUTH_URL);
-		System.out.println("Redirecting to:"+authUrl);
+		LOGGER.fine("Redirecting to:"+authUrl);
 		response.sendRedirect(authUrl);
 	}
 
