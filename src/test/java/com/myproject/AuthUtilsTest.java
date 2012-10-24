@@ -1,9 +1,11 @@
 package com.myproject;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import org.junit.Test;
 
@@ -15,6 +17,7 @@ import org.junit.Test;
 public class AuthUtilsTest
 {
     private boolean sysOut = true;
+	private final static Logger LOGGER = Logger.getLogger(AuthUtilsTest.class.getName());
 
     @Test
     public void testGetConfig()
@@ -24,12 +27,12 @@ public class AuthUtilsTest
         assertNotNull(config);
         if (sysOut) 
         {
-            System.out.println("######### Configuration is ########");
+        	LOGGER.info("######### Configuration is ########");
             for (Map.Entry<Object, Object> configEntry : config.entrySet())
             {
-                System.out.println(configEntry.getKey()+" "+configEntry.getValue());
+            	LOGGER.info(configEntry.getKey()+" "+configEntry.getValue());
             }
-            System.out.println("###### End of Configuration #######");
+            LOGGER.info("###### End of Configuration #######");
         }
         assertTrue(config.size()>0);
         assertNotNull(config.get("client_id"));
