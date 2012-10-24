@@ -31,7 +31,7 @@ public class DanceStart extends HttpServlet {
 	public static final String REDIRECT_URL = "alfresco_auth_redirect_url";
 	public static final String AUTH_CODE = "alfresco_auth_code";
 	public static final String AUTH_SCOPE = "alfresco_auth_scope";
-	public static final String ALFRESCO_API_CONNECTION = "alfresco_api_connection";
+	public static final String ALFRESCO_API_CONNECTION = "api_con";
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -50,9 +50,9 @@ public class DanceStart extends HttpServlet {
 		AlfrescoConnectionFactory connectionFactory = OAuth2.getInstance().getConnectionFactory(props);
 		//Build the OAuth Authorize URL
 		String authURL = OAuth2.getInstance().getAuthorizationUrl(connectionFactory, props);
-		String redirectUrl = OAuth2.getInstance().getRedirectUrl(props);
 		
 		//Set them in the servet context (to be shared across the application)
+		String redirectUrl = OAuth2.getInstance().getRedirectUrl(props);
 		config.getServletContext().setAttribute(ALF_FACTORY, connectionFactory);
 		config.getServletContext().setAttribute(AUTH_URL, authURL);
 		config.getServletContext().setAttribute(REDIRECT_URL, redirectUrl);
