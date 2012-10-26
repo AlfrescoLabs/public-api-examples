@@ -22,6 +22,16 @@
     <servlet-name>DoSomethingServlet</servlet-name>
     <servlet-class>com.myproject.servlets.DoSomethingServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>Will run Groovy scripts as Groovlets</description>
+    <display-name>GroovyServlet</display-name>
+    <servlet-name>GroovyServlet</servlet-name>
+    <servlet-class>groovy.servlet.GroovyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GroovyServlet</servlet-name>
+    <url-pattern>*.groovy</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DoSomethingServlet</servlet-name>
     <url-pattern>/dosomething</url-pattern>
