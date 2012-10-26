@@ -18,10 +18,12 @@ if (!session.groovlet) {
 
 AuthorizedApiConnection api_con = session[DanceStart.ALFRESCO_API_CONNECTION]
 
-Alfresco alfresco = api_con.connection
-Network network = api_con.network
-Person person = api_con.person
-Session cmisSession = api_con.cmisSession
+if (api_con) {
+	Alfresco alfresco = api_con.connection
+	Network network = api_con.network
+	Person person = api_con.person
+	Session cmisSession = api_con.cmisSession
+}
 
 html.html {
     head {
