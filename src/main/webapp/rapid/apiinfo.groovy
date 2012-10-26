@@ -1,4 +1,10 @@
-import com.myproject.servlets.DanceStart
+import org.apache.chemistry.opencmis.client.api.Session
+import org.springframework.social.alfresco.api.Alfresco
+import org.springframework.social.alfresco.api.entities.Network
+import org.springframework.social.alfresco.api.entities.Person
+
+import com.myproject.*
+import com.myproject.servlets.*
 
 def method = request.method
 
@@ -10,7 +16,12 @@ if (!session.groovlet) {
     session.groovlet = 'Groovlets rock again!'
 }
 
-def api_con = session.getAttribute(com.myproject.servlets.DanceStart.ALFRESCO_API_CONNECTION)
+AuthorizedApiConnection api_con = session[DanceStart.ALFRESCO_API_CONNECTION]
+
+Alfresco alfresco = api_con.connection
+Network network = api_con.network
+Person person = api_con.person
+Session cmisSession = api_con.cmisSession
 
 html.html {
     head {
@@ -34,13 +45,13 @@ html.html {
 	if (api_con)	 {
 		h1 'Some basic information retrieved using Alfresco Public API'
 		ul {
-			li "Person is: ${api_con.person.firstName} ${api_con.person.lastName}"
-			li "Email: ${api_con.person.email}"
-			li "Avatar id is ${api_con.person.avatarId}"
+			li "Person is: ${person.firstName} ${person.lastName}"
+			li "Email: ${person.email}"
+			li "Avatar id is ${person.avatarId}"
 		}	
 		ul {
-			li "CMIS root folder is ${api_con.cmisSession.rootFolder.path}"
-			li "Network is ${api_con.network.id}"
+			li "CMIS root folder is ${cmisSession.rootFolder.path}"
+			li "Network is ${network.id}"
 		}
 		
 	}
