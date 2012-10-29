@@ -13,22 +13,20 @@ if (!session) {
 }
 
 if (!session.groovlet) {
-    session.groovlet = 'Groovlets rock again!'
+    session.groovlet = 'Groovlets rock!'
 }
 
 AuthorizedApiConnection api_con = session[DanceStart.ALFRESCO_API_CONNECTION]
 
-if (api_con) {
-	Alfresco alfresco = api_con.connection
-	Network network = api_con.network
-	Person person = api_con.person
-	Session cmisSession = api_con.cmisSession
-}
+Alfresco alfresco = api_con.connection
+Network network = api_con.network
+Person person = api_con.person
+Session cmisSession = api_con.cmisSession
 
 html.html {
     head {
-        title 'G info'
-    }
+        title 'General info'
+    }   
     body {
         h1 'General info'
         ul {
