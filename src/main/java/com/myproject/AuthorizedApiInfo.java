@@ -6,14 +6,13 @@ import org.apache.chemistry.opencmis.client.api.Session;
 import org.springframework.social.alfresco.api.Alfresco;
 import org.springframework.social.alfresco.api.entities.Network;
 import org.springframework.social.alfresco.api.entities.Person;
-import org.springframework.social.connect.UserProfile;
 
 /**
- * Basic container for holding user-specific connection information
+ * Basic container for holding user-specific information
  * @author A person
  *
  */
-public class AuthorizedApiConnection implements Serializable {
+public class AuthorizedApiInfo implements Serializable {
 
 	private static final long serialVersionUID = -2941650968432067652L;
 	
@@ -23,7 +22,7 @@ public class AuthorizedApiConnection implements Serializable {
 	Session cmisSession;
 	
 	
-	public AuthorizedApiConnection(Person person, Network network, Alfresco connection, Session cmisSession) {
+	public AuthorizedApiInfo(Person person, Network network, Alfresco connection, Session cmisSession) {
 		super();
 		this.person = person;
 		this.network = network;
