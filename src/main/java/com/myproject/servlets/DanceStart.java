@@ -32,6 +32,7 @@ public class DanceStart extends HttpServlet {
 	public static final String AUTH_CODE = "alfresco_auth_code";
 	public static final String AUTH_SCOPE = "alfresco_auth_scope";
 	public static final String ALFRESCO_API_CONNECTION = "api_con";
+	public static final String ALFRESCO_USER_CACHED = "user_cache";
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,14 +46,19 @@ public class DanceStart extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		
+		//Using config.properties setup a Spring Social connection factory
+		//One Spring Social connection factory can be shared across the entire application
 		Properties props = AuthUtils.getInstance().getConfig();
-		//Create a connection factory
 		AlfrescoConnectionFactory connectionFactory = OAuth2.getInstance().getConnectionFactory(props);
-		//Build the OAuth Authorize URL
+		
+		//Get the OAuth Authorize URL (based on the config.properties)
 		String authURL = OAuth2.getInstance().getAuthorizationUrl(connectionFactory, props);
 		
-		//Set them in the servet context (to be shared across the application)
+		//Get the redirect url (based on the config.properties)
 		String redirectUrl = OAuth2.getInstance().getRedirectUrl(props);
+		
+		//Set these in the servet context (to be shared across the application)
 		config.getServletContext().setAttribute(ALF_FACTORY, connectionFactory);
 		config.getServletContext().setAttribute(AUTH_URL, authURL);
 		config.getServletContext().setAttribute(REDIRECT_URL, redirectUrl);

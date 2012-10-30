@@ -12,7 +12,7 @@ import org.springframework.social.alfresco.api.Alfresco;
 import org.springframework.social.alfresco.api.entities.Network;
 import org.springframework.social.alfresco.api.entities.Person;
 
-import com.myproject.AuthorizedApiConnection;
+import com.myproject.AuthorizedApiInfo;
 
 /**
  * Servlet implementation that uses the api
@@ -33,7 +33,7 @@ public class DoSomethingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-        AuthorizedApiConnection apiConnection = (AuthorizedApiConnection) request.getSession().getAttribute(DanceStart.ALFRESCO_API_CONNECTION);
+        AuthorizedApiInfo apiConnection = (AuthorizedApiInfo) request.getSession().getAttribute(DanceStart.ALFRESCO_USER_CACHED);
         if (apiConnection != null)
         {
             Alfresco alfresco = apiConnection.getConnection();
