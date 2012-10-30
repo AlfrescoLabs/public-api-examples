@@ -21,7 +21,17 @@
     <display-name>DoSomethingServlet</display-name>
     <servlet-name>DoSomethingServlet</servlet-name>
     <servlet-class>com.myproject.servlets.DoSomethingServlet</servlet-class>
+  </servlet>  
+  <servlet>
+    <description>Use the connection</description>
+    <display-name>UseConn</display-name>
+    <servlet-name>UseConn</servlet-name>
+    <servlet-class>com.myproject.servlets.UseTheConnectionServlet</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>UseConn</servlet-name>
+    <url-pattern>/usecon</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description>Will run Groovy scripts as Groovlets</description>
     <display-name>GroovyServlet</display-name>

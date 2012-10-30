@@ -17,19 +17,20 @@ section {
 </a>
 <h1>Some basic information retrieved using Alfresco Public API</h1>
 <section>
-Person is: ${api_con.person.firstName} ${api_con.person.lastName} <br/>
-Email: ${api_con.person.email}<br/>
-Avatar id is ${api_con.person.avatarId}<br/>
+Person is: ${user_cache.person.firstName} ${user_cache.person.lastName} <br/>
+Email: ${user_cache.person.email}<br/>
 </section>
 <section>
-CMIS root folder is ${api_con.cmisSession.rootFolder.path}
+CMIS root folder is ${user_cache.cmisSession.rootFolder.path}
 </section>
 <section>
-Network is ${api_con.network.id}
+Network is ${user_cache.network.id}
 </section>
 <section>
 	<a href="/alfapi/dosomething">Do something great!</a>
 </section>
-
+<section>
+	<a href="/alfapi/rapid/dosomething.groovy">Do something groovy</a>
+</section>
 </body>
 </html>

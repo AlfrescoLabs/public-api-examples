@@ -24,10 +24,6 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven {
-    	name "Apache Repository"
-        url "https://repository.apache.org/content/groups/public"
-    }
-    maven {
     	name "Alfresco Artifacts Repository"
         url "https://artifacts.alfresco.com/nexus/content/groups/public"
     }
@@ -35,6 +31,7 @@ repositories {
 
 dependencies {
 	compile 'org.alfresco.cmis.client:alfresco-opencmis-extension:0.3'
+	compile 'org.apache.chemistry.opencmis:chemistry-opencmis-client-impl:0.8.0'
 	compile 'org.springframework.social:spring-social-alfresco:0.2.5-RELEASE'
 
     testCompile 'junit:junit:4.10'
