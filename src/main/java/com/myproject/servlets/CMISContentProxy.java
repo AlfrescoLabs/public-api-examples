@@ -14,7 +14,6 @@ import org.alfresco.cmis.client.AlfrescoDocument;
 import org.apache.chemistry.opencmis.client.api.ObjectId;
 import org.apache.chemistry.opencmis.client.api.Session;
 import org.apache.chemistry.opencmis.commons.data.ContentStream;
-import org.apache.http.HttpStatus;
 
 import com.myproject.AuthorizedApiInfo;
 
@@ -69,7 +68,7 @@ public class CMISContentProxy extends HttpServlet
 			String mimeType = stream.getMimeType();
 			servletResponse.setContentType(mimeType);
 			servletResponse.setContentLength((int)length);
-			servletResponse.setStatus(HttpStatus.SC_OK);
+			servletResponse.setStatus(200);
 	
 			// feed the CMIS content stream of the document to the http response
 			InputStream in = new BufferedInputStream(stream.getStream(), 2048);
