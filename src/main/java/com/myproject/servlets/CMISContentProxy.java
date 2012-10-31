@@ -16,7 +16,7 @@ import org.apache.chemistry.opencmis.client.api.Session;
 import org.apache.chemistry.opencmis.commons.data.ContentStream;
 import org.apache.http.HttpStatus;
 
-import com.myproject.AuthorizedApiConnection;
+import com.myproject.AuthorizedApiInfo;
 
 /**
  * A simply proxy that proxies Alfresco content through CMIS by calling CMIS getContentStream. 
@@ -36,9 +36,8 @@ public class CMISContentProxy extends HttpServlet
 
 	@Override
 	protected void service(HttpServletRequest servletRequest, HttpServletResponse servletResponse) throws ServletException, IOException {
-		// add OAuth access token
-        AuthorizedApiConnection apiConnection = (AuthorizedApiConnection)servletRequest.getSession().getAttribute(DanceStart.ALFRESCO_API_CONNECTION);
-		Session session = apiConnection.getCmisSession();
+        AuthorizedApiInfo apiInfo = (AuthorizedApiInfo)servletRequest.getSession().getAttribute(DanceStart.ALFRESCO_API_CONNECTION);
+		Session session = apiInfo.getCmisSession();
 
         // get id of node
         String id = servletRequest.getParameter("id");
