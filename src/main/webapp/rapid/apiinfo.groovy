@@ -22,6 +22,7 @@ Alfresco alfresco = api_con.connection
 Network network = api_con.network
 Person person = api_con.person
 Session cmisSession = api_con.cmisSession
+String accessToken = alfresco.accessToken 
 
 html.html {
     head {
@@ -47,7 +48,7 @@ html.html {
 		ul {
 			li "Person is: ${person.firstName} ${person.lastName}"
 			li "Email: ${person.email}"
-			li "Avatar id is ${person.avatarId}"
+			li "Avatar id is https://api.alfresco.com/alfresco.com/public/cmis/versions/1.0/atom/content?id=${person.avatarId}&access_token=${accessToken}"
 		}	
 		ul {
 			li "CMIS root folder is ${cmisSession.rootFolder.path}"

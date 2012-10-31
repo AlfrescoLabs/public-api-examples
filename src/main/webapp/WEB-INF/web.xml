@@ -4,6 +4,10 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+    <servlet>
+    <servlet-name>CMISContentProxy</servlet-name>
+    <servlet-class>com.myproject.servlets.CMISContentProxy</servlet-class>
+    </servlet>
   <servlet>
     <description>Does the OAuth dance</description>
     <display-name>DanceStart</display-name>
@@ -31,6 +35,10 @@
   <servlet-mapping>
     <servlet-name>GroovyServlet</servlet-name>
     <url-pattern>*.groovy</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CMISContentProxy</servlet-name>
+    <url-pattern>/content</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DoSomethingServlet</servlet-name>

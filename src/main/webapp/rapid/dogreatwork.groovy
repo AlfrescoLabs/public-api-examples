@@ -1,3 +1,5 @@
+import org.alfresco.cmis.client.AlfrescoDocument;
+import org.alfresco.cmis.client.AlfrescoFolder;
 import org.apache.chemistry.opencmis.client.api.Folder
 import org.apache.chemistry.opencmis.client.api.Session
 import org.apache.chemistry.opencmis.commons.enums.VersioningState
@@ -16,12 +18,18 @@ AuthorizedApiConnection api_con = session[DanceStart.ALFRESCO_API_CONNECTION]
 	Person person = api_con.person
 	Session cmisSession = api_con.cmisSession
 	
-	Folder photosFolder = cmisSession.getObjectByPath("/Sites/public-api-trial-site/documentlibrary/photos")
+	AlfrescoFolder documentLibrary = (AlfrescoFolder)cmisSession.getObjectByPath("/Sites/public-api-trial-site/documentlibrary")
+
+	Map props = ["cmis:objectTypeId":"cmis:folder","cmis:name":"photos1"]
+	AlfrescoFolder photosFolder = (AlfrescoFolder)documentLibrary.createFolder(props)
+
 	def photo = new File("/users/gjames/Downloads/Photo1.jpg")
 	Map props = ["cmis:objectTypeId":"cmis:document","cmis:name":"gethin's photo"]
 	ContentStreamImpl fileContent = new ContentStreamImpl(mimeType: "image/jpeg", stream:photo.newInputStream())
+
+	AlfrescoDocument document = (AlfrescoDocument)photosFolder.createDocument(props, fileContent, VersioningState.MAJOR)
+	alfresco.addTagToNode(network.getId(), document.getId(), "devcon2012");
 	
-	def d = photosFolder.createDocument(props, fileContent, VersioningState.MAJOR)
 	
 
 html.html {
