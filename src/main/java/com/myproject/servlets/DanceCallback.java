@@ -37,8 +37,8 @@ public class DanceCallback extends HttpServlet {
 		String scope =  request.getParameter("scope");  //Not used in this version of the api but should be set to "public_api"
 	
 		//Previously set in the DanceStart.init() method
-		String redirectUrl  = (String) getServletContext().getAttribute(DanceStart.REDIRECT_URL);
 		AlfrescoConnectionFactory connectionFactory = (AlfrescoConnectionFactory) getServletContext().getAttribute(DanceStart.ALF_FACTORY);
+		String redirectUrl  = (String) getServletContext().getAttribute(DanceStart.REDIRECT_URL);
 		
 		//Exchange Authorization code for an access token.
 		//This calls the /token url using the authorization code / client_id / client_secret / redirect_uri / grant_type = authorization_code
