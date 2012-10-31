@@ -20,21 +20,9 @@ This Pom is auto-generated using 'gradlew mavenPom'</description>
   </prerequisites>
   <dependencies>
     <dependency>
-      <groupId>org.alfresco.cmis.client</groupId>
-      <artifactId>alfresco-opencmis-extension</artifactId>
-      <version>0.3</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.chemistry.opencmis</groupId>
-      <artifactId>chemistry-opencmis-client-impl</artifactId>
-      <version>0.8.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.social</groupId>
       <artifactId>spring-social-alfresco</artifactId>
-      <version>0.2.5-RELEASE</version>
+      <version>0.2.7-RELEASE</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
