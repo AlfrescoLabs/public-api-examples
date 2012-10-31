@@ -1,11 +1,10 @@
 package com.myproject;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Properties;
 import java.util.Scanner;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.social.alfresco.api.Alfresco;
 import org.springframework.social.alfresco.connect.AlfrescoConnectionFactory;
@@ -14,14 +13,13 @@ import org.springframework.social.oauth2.AccessGrant;
 
 public class SpringSocialTest {
 
-	@Ignore
 	@Test
 	public void test() throws Exception {
-		authenticate(AuthUtils.getInstance().getConfig());
-		fail("Not yet implemented");
+		Alfresco alfresco = authenticate(AuthUtils.getInstance().getConfig());
+		assertNotNull(alfresco.getAccessToken());
 	}
 
-	private static void authenticate(Properties config) throws Exception {
+	private static Alfresco authenticate(Properties config) throws Exception {
 
 		AlfrescoConnectionFactory connectionFactory = OAuth2.getInstance().getConnectionFactory(config);
 		String authURL = OAuth2.getInstance().getAuthorizationUrl(connectionFactory, config);
@@ -37,6 +35,7 @@ public class SpringSocialTest {
 
         Connection<Alfresco> connection = connectionFactory.createConnection(accesstoken);
         Alfresco alfresco = connection.getApi();
+        return alfresco;
         //Session session = alfresco.getCMISSession(network);
 	}
 
