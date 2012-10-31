@@ -14,7 +14,7 @@ import com.myproject.servlets.*
         Alfresco alfresco = apiConnection.getConnection();
         Network network = apiConnection.getNetwork();
         Person person = apiConnection.getPerson();
-        Session session = apiConnection.getCmisSession();
+        Session cmisSession = apiConnection.getCmisSession();
     	response.getWriter().append("You are now using the Alfresco API: ${person.firstName}");
 		out.append("<br/>Using dosomething.groovy");
     }
