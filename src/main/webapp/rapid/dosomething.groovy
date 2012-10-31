@@ -7,18 +7,16 @@ import com.myproject.*
 import com.myproject.servlets.*
 
 
-	//Same code as the Java DoSomethingServlet
-    AuthorizedApiInfo apiConnection = (AuthorizedApiInfo) request.getSession().getAttribute(DanceStart.ALFRESCO_USER_CACHED);
-    if (apiConnection != null)
-    {
-        Alfresco alfresco = apiConnection.getConnection();
-        Network network = apiConnection.getNetwork();
-        Person person = apiConnection.getPerson();
-        Session session = apiConnection.getCmisSession();
-    	response.getWriter().append("You are now using the Alfresco API: ${person.firstName}");
-		out.append("<br/>Using dosomething.groovy");
-    }
-    else
-    {
-    	response.getWriter().append("You are NOT using the Alfresco API.");
-    }
+if (!session) {
+	session = request.getSession(true)
+}
+
+AuthorizedApiInfo apiInfo = session[DanceStart.ALFRESCO_USER_CACHED]
+Alfresco alfresco = apiInfo.connection
+Network network = apiInfo.network
+Person person = apiInfo.person
+Session cmisSession = apiInfo.cmisSession
+String accessToken = alfresco.accessToken
+
+response.getWriter().append("You are now using the Alfresco API: ${person.firstName}");
+out.append("<br/>Using dosomething.groovy");

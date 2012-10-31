@@ -9,12 +9,17 @@ import org.springframework.social.alfresco.api.entities.Person
 import com.myproject.*
 import com.myproject.servlets.*
 
-AuthorizedApiConnection api_con = session[DanceStart.ALFRESCO_API_CONNECTION]
 
-Alfresco alfresco = api_con.connection
-Network network = api_con.network
-Person person = api_con.person
-Session cmisSession = api_con.cmisSession
+if (!session) {
+	session = request.getSession(true)
+}
+
+AuthorizedApiInfo apiInfo = session[DanceStart.ALFRESCO_USER_CACHED]
+Alfresco alfresco = apiInfo.connection
+Network network = apiInfo.network
+Person person = apiInfo.person
+Session cmisSession = apiInfo.cmisSession
+String accessToken = alfresco.accessToken
 
 String query = "select * from cmis:document where CONTAINS('TAG:devcon2012')";
 ItemIterable<QueryResult> results = cmisSession.query(query, false)

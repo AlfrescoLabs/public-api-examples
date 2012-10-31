@@ -16,46 +16,43 @@ if (!session.groovlet) {
     session.groovlet = 'Groovlets rock!'
 }
 
-AuthorizedApiConnection api_con = session[DanceStart.ALFRESCO_API_CONNECTION]
-
-Alfresco alfresco = api_con.connection
-Network network = api_con.network
-Person person = api_con.person
-Session cmisSession = api_con.cmisSession
-String accessToken = alfresco.accessToken 
-
-html.html {
-    head {
-        title 'General info'
-    }   
-    body {
-        h1 'General info'
-        ul {
-            li "Method: ${method}"
-            li "RequestURI: ${request.requestURI}"
-            li "session.groovlet: ${session.groovlet}"
-            li "application.version: ${context.version}"
-        }
-        
-        h1 'Headers'
-        ul {
-            headers.each {
-                li "${it.key} = ${it.value}"
-            }
-        }
-	if (api_con)	 {
-		h1 'Some basic information retrieved using Alfresco Public API'
-		ul {
-			li "Person is: ${person.firstName} ${person.lastName}"
-			li "Email: ${person.email}"
-			li "Avatar id is https://api.alfresco.com/alfresco.com/public/cmis/versions/1.0/atom/content?id=${person.avatarId}&access_token=${accessToken}"
-		}	
-		ul {
-			li "CMIS root folder is ${cmisSession.rootFolder.path}"
-			li "Network is ${network.id}"
-		}
-		
-	}
-
-    }
-}
+AuthorizedApiInfo apiInfo = session[DanceStart.ALFRESCO_USER_CACHED]
+Alfresco alfresco = apiInfo.connection
+Network network = apiInfo.network
+Person person = apiInfo.person
+Session cmisSession = apiInfo.cmisSession
+	 
+ html.html {
+	 head {
+		 title 'General info
+	 }
+	 body {
+		 h1 'General info'
+		 ul {
+			 li "Method: ${method}"
+			 li "RequestURI: ${request.requestURI}"
+		 }
+		 
+		 h1 'Headers'
+		 ul {
+			 headers.each {
+				 li "${it.key} = ${it.value}"
+			 }
+		 }
+	if (userCon)	 {
+		 h1 'Some basic information retrieved using Alfresco Public API'
+		 ul {
+			 li "Person is: ${person.firstName} ${person.lastName}"
+			 li "Email: ${person.email}"
+			 li "Avatar id is ${person.avatarId}"
+		 }
+		 ul {
+			 li "CMIS root folder is ${cmisSession.rootFolder.path}"
+			 li "Network is ${network.id}"
+		 }
+		 
+	 }
+ 
+	 }
+ }
+	

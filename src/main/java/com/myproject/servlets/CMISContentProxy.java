@@ -36,7 +36,7 @@ public class CMISContentProxy extends HttpServlet
 
 	@Override
 	protected void service(HttpServletRequest servletRequest, HttpServletResponse servletResponse) throws ServletException, IOException {
-        AuthorizedApiInfo apiInfo = (AuthorizedApiInfo)servletRequest.getSession().getAttribute(DanceStart.ALFRESCO_API_CONNECTION);
+        AuthorizedApiInfo apiInfo = (AuthorizedApiInfo)servletRequest.getSession().getAttribute(DanceStart.ALFRESCO_USER_CACHED);
 		Session session = apiInfo.getCmisSession();
 
         // get id of node
