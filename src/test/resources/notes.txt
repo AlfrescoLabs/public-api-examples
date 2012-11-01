@@ -1,0 +1,33 @@
+	//Create and view folders
+
+	Folder parentFolder = cmisSession.getObjectByPath("/Sites/public-api-trial-site/documentlibrary/devcon")
+
+	Map props = ["cmis:objectTypeId":"cmis:folder","cmis:name":"myphotos"]
+	Folder myFolder = parentFolder.createFolder(props)
+
+	out.append("<br/>Created folder ${myFolder.name}, node id is ${myFolder.id}")
+	
+	parentFolder.children.each { Folder f ->
+		out.append("<br/>Child ${f.name}")
+	}
+
+
+	//Upload a photo
+	Folder parentFolder = cmisSession.getObjectByPath("/Sites/public-api-trial-site/documentlibrary/devcon/myphotos")
+	
+	Map props = ["cmis:objectTypeId":"cmis:document","cmis:name":"devcon photo"]
+	def photo = new File("/Users/gjames/Documents/devcon/pizza.jpg")
+	ContentStreamImpl fileContent = new ContentStreamImpl(mimeType: "image/jpeg", stream:photo.newInputStream())
+
+	Document document = parentFolder.createDocument(props, fileContent, VersioningState.MAJOR)
+	out.append("Document is "+document.id)
+	parentFolder.children.each { f ->
+		out.append("<br/>Child ${f.name}")
+	}
+	out.append("<br/>Total number of children is "+parentFolder.children.totalNumItems)
+
+	//comments
+	alfresco.createComment(network.id, "dcd605e2-24de-43f9-bfeb-b0ba26a5f45c;1.0", "Devcon is great")
+	alfresco.getComments(network.id, "dcd605e2-24de-43f9-bfeb-b0ba26a5f45c;1.0").entries.each {
+		out.append("<br/>Comment ${it.content}");
+	}
