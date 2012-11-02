@@ -11,7 +11,9 @@ import org.apache.chemistry.opencmis.client.api.Session;
 import org.springframework.social.alfresco.api.Alfresco;
 import org.springframework.social.alfresco.api.entities.Network;
 import org.springframework.social.alfresco.api.entities.Person;
+import org.springframework.social.alfresco.connect.AlfrescoConnectionFactory;
 import org.springframework.social.connect.Connection;
+import org.springframework.social.oauth2.AccessGrant;
 
 import com.myproject.AuthorizedApiInfo;
 
@@ -20,7 +22,7 @@ import com.myproject.AuthorizedApiInfo;
  */
 public class UseTheConnectionServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -9222093347256077200L;
 
 	/**
      * @see HttpServlet#HttpServlet()
@@ -34,8 +36,14 @@ public class UseTheConnectionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-		Connection<Alfresco> connection =  (Connection<Alfresco>) request.getSession().getAttribute(DanceStart.ALFRESCO_API_CONNECTION);
-        	
+		//Retrieve the (previously setup) access grant and connection factory
+		AccessGrant accessGrant = (AccessGrant) request.getSession().getAttribute(DanceStart.ALFRESCO_ACCESS_GRANT);
+		AlfrescoConnectionFactory connectionFactory = (AlfrescoConnectionFactory) getServletContext().getAttribute(DanceStart.ALF_FACTORY);
+        
+	    //Create a user specific connection using the access grant
+        Connection<Alfresco> connection = connectionFactory.createConnection(accessGrant);
+        
+        //Get some basic information and store it in an AuthorizedApiInfo class
         Alfresco alfresco = connection.getApi();
         Network network = alfresco.getHomeNetwork();
         Person person = alfresco.getCurrentUser();
@@ -45,6 +53,7 @@ public class UseTheConnectionServlet extends HttpServlet {
         AuthorizedApiInfo apiConnection = new AuthorizedApiInfo(person, network, alfresco, session);
         request.getSession().setAttribute(DanceStart.ALFRESCO_USER_CACHED, apiConnection);
 
+        //Redirect to an information jsp
         response.sendRedirect("/alfapi/jsp/apiinfo.jsp");
 	}
 

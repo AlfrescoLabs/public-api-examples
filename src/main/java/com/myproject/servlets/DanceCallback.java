@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.social.alfresco.api.Alfresco;
 import org.springframework.social.alfresco.connect.AlfrescoConnectionFactory;
-import org.springframework.social.connect.Connection;
 import org.springframework.social.oauth2.AccessGrant;
 
 /**
@@ -43,15 +41,15 @@ public class DanceCallback extends HttpServlet {
 		//Exchange Authorization code for an access token.
 		//This calls the /token url using the authorization code / client_id / client_secret / redirect_uri / grant_type = authorization_code
 		//It parses the json response and creates an AccessGrant object.
-        AccessGrant accesstoken = connectionFactory.getOAuthOperations().exchangeForAccess(authorizationCode, redirectUrl, null);
+        AccessGrant accessGrant = connectionFactory.getOAuthOperations().exchangeForAccess(authorizationCode, redirectUrl, null);
         
-        LOGGER.fine("Received an access token.."+accesstoken.getAccessToken());
+        LOGGER.fine("Received an access token.."+accessGrant.getAccessToken());
         
-        //Now we have a user specific connection we could store this in our datastore / cache
-        Connection<Alfresco> connection = connectionFactory.createConnection(accesstoken);
-        
+        //Now we have a user specific Access Grant we could store this in our datastore / cache
         //This example has no datastore so we will store it in the HTTPSession.  This is not BEST PRACTICE.
-        request.getSession().setAttribute(DanceStart.ALFRESCO_API_CONNECTION, connection);
+        request.getSession().setAttribute(DanceStart.ALFRESCO_ACCESS_GRANT, accessGrant);
+        
+        //Redirect to UseTheConnectionServlet to Use the connection information
         response.sendRedirect("/alfapi/usecon");
 	}
 
