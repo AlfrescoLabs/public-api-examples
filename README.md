@@ -1,5 +1,5 @@
 ## Devcon 2012 - Alfresco Api Sample app  
-This is a basic server-side Java servlet application the uses the Alfresco API.  It uses:
+This is a basic server-side Java servlet application that uses the Alfresco API.  It uses:
 
 1. [Alfresco Spring Social](https://github.com/Alfresco/spring-social-alfresco)
 2. [OpenCMIS](http://chemistry.apache.org/java/opencmis.html)
