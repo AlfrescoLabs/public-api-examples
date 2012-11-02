@@ -41,7 +41,6 @@ public class DoSomethingServlet extends HttpServlet {
             Person person = apiConnection.getPerson();
             Session cmisSession = apiConnection.getCmisSession();
         	response.getWriter().append("You are now using the Alfresco API: "+person.getFirstName());
-        	response.getWriter().append("Access token is : "+alfresco.getAccessToken());
         }
         else
         {
