@@ -31,7 +31,7 @@ public class DanceStart extends HttpServlet {
 	public static final String REDIRECT_URL = "alfresco_auth_redirect_url";
 	public static final String AUTH_CODE = "alfresco_auth_code";
 	public static final String AUTH_SCOPE = "alfresco_auth_scope";
-	public static final String ALFRESCO_API_CONNECTION = "api_con";
+	public static final String ALFRESCO_ACCESS_GRANT = "api_grant";
 	public static final String ALFRESCO_USER_CACHED = "user_cache";
 	
     /**
