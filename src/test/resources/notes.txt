@@ -27,7 +27,7 @@
 	out.append("<br/>Total number of children is "+parentFolder.children.totalNumItems)
 
 	//comments
-	alfresco.createComment(network.id, "dcd605e2-24de-43f9-bfeb-b0ba26a5f45c;1.0", "Devcon is great")
-	alfresco.getComments(network.id, "dcd605e2-24de-43f9-bfeb-b0ba26a5f45c;1.0").entries.each {
+	alfresco.createComment(network.id, "dcd605e2-xy-43f9-bfeb-b0ba26a5f45c;1.0", "Devcon is great")
+	alfresco.getComments(network.id, "dcd605e2-xy-43f9-bfeb-b0ba26a5f45c;1.0").entries.each {
 		out.append("<br/>Comment ${it.content}");
 	}
