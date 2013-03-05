@@ -1,4 +1,4 @@
-## Devcon 2012 - Alfresco Api Sample app  
+## Alfresco Api Sample app  
 This is a basic server-side Java servlet application that uses the Alfresco API.  It uses:
 
 1. [Alfresco Spring Social](https://github.com/Alfresco/spring-social-alfresco)
@@ -34,7 +34,13 @@ An account on the [Alfresco Developer Portal](https://developer.alfresco.com) is
 * To generate eclipse config/project files using gradle: `gradlew eclipse`  
 * To generate eclipse config/project files using maven: `mvn eclipse:eclipse`  
   
-  
+### Video presentation that uses this sample code
+At Alfresco Devcon 2012 there was a presentation that explained the Alfresco API, 
+how to register as a developer and how to use the api.  This project was used as the sample
+code during the presentation.
+
+https://www.youtube.com/watch?v=s6o-6_tjz2Q&feature=share&list=PLyJdWuUHM3ijuAepDT3d8HPCzK39W3T1p
+
 ### License
 Copyright (C) 2012 Alfresco Software Limited
 
